@@ -52,29 +52,36 @@ public class ChangeCalculatorTest {
 
     @Test
     public void testMultiplesOfFive() {
+
         for (int i = 0; i < FIVES.length; i ++) {
-            assertEquals(FIVES_COMBINATIONS[i], ChangeCalculator.calculateChange(FIVES[i]));
+            ChangeCalculator.calculateChange(FIVES[i]);
+            //ChangeCalculator.printCombinationsToFile(FIVES[0]);
+            assertEquals(FIVES_COMBINATIONS[i], ChangeCalculator.numCombos);
         }
+
     }
 
     @Test
     public void testMultiplesOfFiveLarge() {
         for (int i = 0; i < FIVES_LARGE.length; i ++) {
-            assertEquals(FIVES_LARGE_COMBINATIONS[i], ChangeCalculator.calculateChange(FIVES_LARGE[i]));
+            ChangeCalculator.calculateChange(FIVES_LARGE[i]);
+            assertEquals(FIVES_LARGE_COMBINATIONS[i], ChangeCalculator.numCombos);
         }
     }
 
     @Test
     public void testOthers() {
         for (int i = 0; i < OTHERS.length; i ++) {
-            assertEquals(OTHERS_COMBINATIONS[i], ChangeCalculator.calculateChange(OTHERS[i]));
+            ChangeCalculator.calculateChange(OTHERS[i]);
+            assertEquals(OTHERS_COMBINATIONS[i], ChangeCalculator.numCombos);
         }
     }
 
     @Test
     public void testOthersLarge() {
         for (int i = 0; i < OTHERS_LARGE.length; i ++) {
-            assertEquals(OTHERS_LARGE_COMBINATIONS[i], ChangeCalculator.calculateChange(OTHERS_LARGE[i]));
+            ChangeCalculator.calculateChange(OTHERS_LARGE[i]);
+            assertEquals(OTHERS_LARGE_COMBINATIONS[i], ChangeCalculator.numCombos);
         }
     }
 
@@ -84,8 +91,9 @@ public class ChangeCalculatorTest {
     @Test
     public void testDuplicates() {
         // First verify that 75 cents yields 121 combinations
+        ChangeCalculator.calculateChange(FIVES_LARGE[0]);
         assertEquals("Test duplicates failed - Incorrect number of combinations.",
-                FIVES_LARGE_COMBINATIONS[0], ChangeCalculator.calculateChange(FIVES_LARGE[0]));
+                FIVES_LARGE_COMBINATIONS[0], ChangeCalculator.numCombos);
 
         // Set to contain lines read from "CoinCombinations.txt"
         // As a Set, this object's infrastructure prohibits the addition of duplicate elements

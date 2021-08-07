@@ -30,9 +30,21 @@ public class ChangeCalculator {
 		// TODO:
 		// Implement a recursive solution following the given documentation.
 		list1 = new ArrayList<Integer>();
-		combos.clear();
-		numOfCombos = 0;
+		for(int i = 0, i< cents+1, i++) {
+			list1.add(0);
+		}
+		list1.set(0,1);
+		for (int i = 0; i< coinValues.length; i++) {
+			for(int j = o; j < cents+1; j++) {
+				if(coinValues[i]<= j)
+					list1.set(j,list1.get(j)+list1.get(j-coinValues[i]));
+			}
+		}
+		
 		makeChange(cents, 0, 0, 0, cents);
+		for(String output: combos) {
+			System.out.println(output)
+		}
 		return list1.get(cents);
 	}
 
